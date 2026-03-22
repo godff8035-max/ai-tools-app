@@ -14,7 +14,14 @@ let userId = null;
 // LOGIN
 function login() {
   const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithRedirect(provider);
+  auth.signInWithPopup(provider)
+    .then(() => {
+      console.log("Login successful");
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Login failed");
+    });
 }
 
 // LOGOUT
