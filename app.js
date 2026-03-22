@@ -87,13 +87,17 @@ async function generate() {
 
   try {
     const response = await fetch(
-      `https://api.popcat.xyz/caption?text=${encodeURIComponent(input)}`
-    );
+  `https://api.affiliateplus.xyz/api/chatbot?message=Give me an Instagram caption about ${encodeURIComponent(input)}&botname=captionbot&ownername=you`
+);
 
-    const data = await response.json();
+const data = await response.json();
 
-    document.getElementById("output").innerText =
-      data.caption || "Try again...";
+if (data.message) {
+  document.getElementById("output").innerText = data.message;
+} else {
+  document.getElementById("output").innerText =
+    "🔥 " + input + " vibes only\n💯 Living the " + input + " life";
+}
 
     // ✅ THIS MUST BE INSIDE TRY
     await userRef.update({
