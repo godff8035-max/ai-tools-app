@@ -87,15 +87,13 @@ async function generate() {
 
   try {
     const response = await fetch(
-  `https://api.affiliateplus.xyz/api/chatbot?message=${encodeURIComponent(input)}&botname=captionbot&ownername=you`
+  `https://api.popcat.xyz/caption?text=${encodeURIComponent(input)}`
 );
 
-    const data = await response.json();
+const data = await response.json();
 
-if (data.message) {
-  document.getElementById("output").innerText = data.message;
-} else {
-  document.getElementById("output").innerText = "⚠️ Try again";
+document.getElementById("output").innerText =
+  data.caption || "Try again...";
 }
 
     await userRef.update({
