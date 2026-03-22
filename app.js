@@ -86,17 +86,15 @@ async function generate() {
   document.getElementById("output").innerText = "⏳ Generating...";
 
   try {
-    // TEMP FAKE AI (safe for now)
-    const captions = [
-      `🔥 Living the ${input} life!`,
-      `✨ ${input} vibes only`,
-      `💯 Can't get enough of ${input}`
-    ];
+    const response = await fetch(
+      `https://api.popcat.xyz/caption?text=${encodeURIComponent(input)}`
+    );
+
+    const data = await response.json();
 
     document.getElementById("output").innerText =
-      captions.join("\n\n");
+      data.caption || "No caption found";
 
-    // Deduct credit AFTER success
     await userRef.update({
       credits: credits - 1
     });
@@ -105,6 +103,6 @@ async function generate() {
 
   } catch (error) {
     console.error(error);
-    document.getElementById("output").innerText = "❌ Error occurred";
+    document.getElementById("output").innerText = "❌ Error generating captions";
   }
 }
