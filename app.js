@@ -74,22 +74,17 @@ async function generate() {
   document.getElementById("output").innerText = "⏳ Generating...";
 
   try {
-    const captions = [
-      `🔥 Living my best ${input} life!`,
-      `✨ ${input} vibes only`,
-      `💯 Can't get enough of ${input}`,
-      `🌍 Exploring ${input}`,
-      `😎 ${input} mood`,
-      `🚀 ${input} to next level`,
-      `❤️ Love ${input}`,
-      `📸 ${input} moments`,
-      `🌟 ${input} vibe`,
-      `🎯 ${input} goals`
-    ];
+    const response = await fetch("https://ai-backend-nn06.onrender.com/generate", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({ input })
+});
 
-    const random = captions[Math.floor(Math.random() * captions.length)];
+const data = await response.json();
 
-    document.getElementById("output").innerText = random;
+document.getElementById("output").innerText = data.result;
 
     await userRef.update({
       credits: credits - 1
