@@ -87,13 +87,12 @@ async function generate() {
 
   try {
     const response = await fetch(
-      `https://api.popcat.xyz/caption?text=${encodeURIComponent(input)}`
-    );
+  `https://api.affiliateplus.xyz/api/chatbot?message=${encodeURIComponent(input)}&botname=captionbot&ownername=you`
+);
 
     const data = await response.json();
 
-    document.getElementById("output").innerText =
-      data.caption || "No caption found";
+    document.getElementById("output").innerText = data.message;
 
     await userRef.update({
       credits: credits - 1
