@@ -87,15 +87,15 @@ async function generate() {
 
   try {
     const response = await fetch(
-  `https://api.popcat.xyz/caption?text=${encodeURIComponent(input)}`
-);
+      `https://api.popcat.xyz/caption?text=${encodeURIComponent(input)}`
+    );
 
-const data = await response.json();
+    const data = await response.json();
 
-document.getElementById("output").innerText =
-  data.caption || "Try again...";
-}
+    document.getElementById("output").innerText =
+      data.caption || "Try again...";
 
+    // ✅ THIS MUST BE INSIDE TRY
     await userRef.update({
       credits: credits - 1
     });
