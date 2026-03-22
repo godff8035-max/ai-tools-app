@@ -96,3 +96,23 @@ document.getElementById("output").innerText = data.result;
     document.getElementById("output").innerText = "Error";
   }
 }
+document.getElementById("earnBtn").onclick = async () => {
+  if (!userId) {document.getElementById("earnBtn").classList.remove("hidden");
+    alert("Login first");
+    return;
+  }
+
+  alert("🎥 Watching ad...");
+
+  const userRef = db.collection("users").doc(userId);
+  const doc = await userRef.get();
+
+  let credits = doc.data().credits;
+
+  await userRef.update({
+    credits: credits + 1
+  });
+
+  alert("✅ You earned 1 credit!");
+  loadCredits();
+};
