@@ -92,7 +92,11 @@ async function generate() {
 
     const data = await response.json();
 
-    document.getElementById("output").innerText = data.message;
+if (data.message) {
+  document.getElementById("output").innerText = data.message;
+} else {
+  document.getElementById("output").innerText = "⚠️ Try again";
+}
 
     await userRef.update({
       credits: credits - 1
