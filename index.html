@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Caption Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    button, input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      background: #38bdf8;
+      cursor: pointer;
+    }
+
+    #output {
+      margin-top: 15px;
+      padding: 10px;
+      background: #0f172a;
+      border-radius: 10px;
+      min-height: 50px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>🚀 AI Caption</h2>
+
+  <button id="loginBtn" onclick="login()">Login with Google</button>
+  <button id="logoutBtn" class="hidden" onclick="logout()">Logout</button>
+
+  <p id="credits">Credits: 0</p>
+
+  <input id="input" placeholder="Enter topic">
+
+  <button onclick="generate()">Generate</button>
+
+  <div id="output"></div>
+</div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
