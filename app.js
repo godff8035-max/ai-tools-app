@@ -74,6 +74,8 @@ async function generate() {
   document.getElementById("output").innerText = "⏳ Generating...";
 
   try {
+    console.log("Calling backend...");
+    
     const response = await fetch("https://ai-backend-o5kg.onrender.com/generate", {
   method: "POST",
   headers: {
