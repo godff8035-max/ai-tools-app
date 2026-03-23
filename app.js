@@ -1,3 +1,4 @@
+console.log("app.js loaded");
 const firebaseConfig = {
   apiKey: "AIzaSyD89x5czKFVezFTZSx7RiSbsHX4wq1k4_U",
   authDomain: "ai-tools-app-6c5a7.firebaseapp.com",
