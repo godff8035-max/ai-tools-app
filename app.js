@@ -118,4 +118,5 @@ document.getElementById("earnBtn").onclick = async () => {
 
   alert("✅ You earned 1 credit!");
   loadCredits();
+  document.getElementById("genBtn").onclick = generate;
 };
